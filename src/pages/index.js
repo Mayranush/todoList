@@ -1,2 +1,2 @@
-export ToDo from "./ToDo/ToDo";
+export Home from "./Home/Home";
 

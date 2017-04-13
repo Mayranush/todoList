@@ -1,7 +1,7 @@
 const ActionTypes = {
     toDoList: {
-
+        check: "ITEM_CHECK",
     }
 };
 
-export { ActionTypes }
+export default ActionTypes;

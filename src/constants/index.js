@@ -1,1 +1,1 @@
-import {ActionTypes} from "./ActionTypes";
+export ActionTypes  from "./ActionTypes";

@@ -1,4 +1,12 @@
-.todo-list-container{
-    width: 50%;
-    background: #ccc;
+.todo-list-container {
+    width: 40%;
+    .to-do-item {
+        height: 30px;
+        border: 1px solid #ccc;
+        line-height: 30px;
+        p {
+            display: inline-block;
+            margin-left: 10px;
+        }
+    }
 }
