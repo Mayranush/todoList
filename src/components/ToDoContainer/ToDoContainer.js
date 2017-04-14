@@ -16,7 +16,8 @@ class ToDoContainer extends Component {
     }
 
     checkItem({target}) {
-        this.props.checkToDoItemAction({ id: target.id })
+
+        this.props.checkToDoItemAction({ cotegoryId: target.id.split("-")[0], itemId: target.id.split("-")[1] })
     }
 
     render() {
@@ -24,11 +25,14 @@ class ToDoContainer extends Component {
         return (
             <div className="todo-list-container">
                 {this.props.toDoList.map(
-                    (item, i) => <ToDoItem
-                        item={item}
-                        key={item.id}
-                        id={item.id}
-                        handleCheckItem={this.handleCheckItem} />
+                    (item, i) =>
+                        this.props.choosenCategoryId == item.id &&
+                        <ToDoItem
+                            item={item}
+                            key={item.id}
+                            id={item.id}
+                            cotegoryId={this.props.choosenCategoryId}
+                            handleCheckItem={this.handleCheckItem} />
                 )}
             </div>
         )
@@ -37,3 +41,4 @@ class ToDoContainer extends Component {
 
 
 export { ToDoContainer }
+

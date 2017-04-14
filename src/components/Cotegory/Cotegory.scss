@@ -1,10 +1,11 @@
-.todo-list-container {
-    float: right;
-    width: 60%;
+.cotegory-container {
+    float: left;
+    background: #ccc;
+    width: 40%;
     box-sizing: border-box;
-    .to-do-item {
+    .cotegory-item {
         height: 30px;
-        border: 1px solid #ccc;
+        border: 1px solid #999;
         line-height: 30px;
         p {
             display: inline-block;
