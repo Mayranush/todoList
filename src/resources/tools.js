@@ -1,17 +1,17 @@
 function filter() {
     let cloneState = function (state) {
         let newState = [];
-        for (let i = 0; i < state.length; i++) {
-            newState.push(Object.assign({}, state[i]));
+
+        state.map((item, i) => {
+            newState.push(Object.assign({}, item));
             newState[i].items = [];
-            for (let j = 0; j < state[i].items.length; j++) {
-                newState[i].items.push(Object.assign({}, state[i].items[j]))
-            }
-        }
+            item.items.map(elem => {
+                newState[i].items.push(Object.assign({}, elem))
+            })
+        })
+
         return newState;
     };
-
-
     return {
         cloneState: cloneState
     }

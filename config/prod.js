@@ -12,66 +12,37 @@ module.exports = {
     publicPath: "/",
   },
 
-  resolve: {
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.js']
-  },
-  resolveLoader: {
-    modulesDirectories: ['node_modules'],
-    moduleTemplates: ['*-loader', '*'],
-    extensions: ['', '.js']
-  },
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /\.s?css$/,
-  //       loader: ExtractTextPlugin.extract({
-  //         fallbackLoader: "style-loader",
-  //         loader: [{
-  //           loader: "css-loader",
-  //           options: {
-  //             sourceMap: true,
-  //             minimize: true,
-  //             autoprefixer: {
-  //               add: true,
-  //               browsers: ["last 3 versions"],
-  //             },
-  //           },
-  //         }, {
-  //           loader: "sass-loader",
-  //           options: {
-  //             sourceMap: true
-  //           }
-  //         }],
-  //       }),
-  //     },
-  //   ],
-  // },
-  //
   module: {
-    loaders: [
-       {
-        test: /\.s?css$/,
-        loader: "style!css!sass",
-
-      },
-
-      {
-        test: /\.css$/,
-        loader: "style!css",
-
-        include: [
-          path.resolve(__dirname, '/node_modules/slick-carousel/slick'),
-
-        ],
-      },
-
-    ]
-  },
+	    rules: [
+	      {
+	        test: /\.s?css$/,
+	        loader: ExtractTextPlugin.extract({
+	          fallbackLoader: "style-loader",
+	          loader: [{
+	            loader: "css-loader",
+	            query: {
+	              sourceMap: true,
+	              minimize: true,
+	              autoprefixer: {
+	                add: true,
+	                browsers: ["last 3 versions"],
+	              },
+	            },
+	          }, {
+	            loader: "sass-loader",
+	            query: {
+	              sourceMap: true
+	            }
+	          }],
+	        }),
+	      },
+	    ],
+	  },
+	  
   plugins: [
-    // new ExtractTextPlugin({
-    //   filename: "styles.[hash:8].css"
-    // }),
+     new ExtractTextPlugin({
+       filename: "styles.[hash:8].css"
+     }),
     new CleanWebpackPlugin(paths.dist, {
       root: paths.root,
       verbose: false

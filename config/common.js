@@ -11,9 +11,7 @@ module.exports = {
   output: {
     path: paths.dist,
     filename: "[name].[hash:8].js"
-    // filename: "[name].js"
-
-  },
+ },
   resolve: {
     modules: [
       paths.app,
@@ -21,64 +19,64 @@ module.exports = {
     ],
     alias: {
       sources: paths.app,
-      // resources: paths.resources,
+      resources: paths.resources,
       assets: paths.assets,
       components: path.resolve(paths.app, "components"),
       pages: path.resolve(paths.app, "pages"),
       views: path.resolve(paths.app, "views"),
       store: path.resolve(paths.app, "store", "store"),
-      // const: path.resolve(paths.resources, "const"),
+      constants: path.resolve(paths.resources, "constants"),
     },
     extensions: [".js"]
   },
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /\.jsx?$/,
-  //       exclude: /node_modules/,
-  //       loader: "babel-loader",
-  //     },
-  //     {
-  //       test: /\.(ico|jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
-  //       loader: "url-loader",
-  //       options: {
-  //         limit: 10000,
-  //         name: "assets/[name].[hash:8].[ext]"
-  //       }
-  //     },
-  //   ]
-  // },
-
-
-  module: {
-    loaders: [
-      {
-        test: /\.js?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ["es2015", "stage-0", "react"],
-          plugins: ['transform-runtime']
-          
-        },
-      },
-      {
-        test: /\.(ico|jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
-        loader: "url-loader",
-        options: {
-          limit: 10000,
-          name: "assets/[name].[hash:8].[ext]"
-        }
-      },
-      {
-        test: /\.json$/,
-        loader: "json-loader"
-      }
-
-    ]
+   performance: {
+	    maxAssetSize: 10000000,
+	    maxEntrypointSize: 10000000,
+	    hints: "warning",
   },
-
-
+  
+  module: {
+	    rules: [
+	      {
+	        test: /\.js?$/,
+	        exclude: /node_modules/,
+	        loader: "babel-loader",
+	        query: {
+// presets: ["es2015", "react", "stage-0"],
+// plugins: ['transform-runtime']
+	        	  "presets": [
+	        		    "react",
+	        		    "latest"
+	        		  ],
+	        		  "plugins": [
+	        		    "transform-export-extensions",
+	        		    "transform-class-properties",
+	        		    ["transform-object-rest-spread", { "useBuiltIns": true }],
+	        		    ["transform-regenerator", {
+	        		      "async": false
+	        		    }],
+	        		    ["transform-runtime", {
+	        		      "helpers": false,
+	        		      "polyfill": false,
+	        		      "regenerator": true
+	        		    }]
+	        		  ]
+        },
+	      },
+	      {
+	        test: /\.(ico|jpg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+	        loader: "url-loader",
+	        options: {
+	          limit: 10000,
+	          name: "assets/[name].[hash:8].[ext]"
+	        }
+	      },
+	      {
+	        test: /\.json$/,
+	        loader: "json-loader"
+	      }
+	    ]
+	  },
   plugins: [
     new HtmlWebpackPlugin({
       title: "DMPL",

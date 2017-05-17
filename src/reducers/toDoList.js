@@ -58,18 +58,18 @@ export default (state = mockData, action) => {
             let cotegoryId = action.payload.cotegoryId;
             let itemId = action.payload.itemId;
             let newState = tools.cloneState(state);
-
-            for (let i = 0; i < newState.length; i++) {
-                if (newState[i].id === +cotegoryId) {
-                    for (let j = 0; j < newState[i].items.length; j++) {
-                        if (newState[i].items[j].id === +itemId) {
-                            newState[i].items[j].done = !newState[i].items[j].done;
-                            break;
+            
+            newState.map(item => {
+                if (item.id === +cotegoryId) {
+                    item.items.map(itemElem => {
+                        if (itemElem.id === +itemId) {
+                            itemElem.done = !itemElem.done;
+                            return
                         }
-                    }
+                    })
                 }
-            }
-            console.log(newState, state)
+            })
+
             return newState;
         default:
             return state;

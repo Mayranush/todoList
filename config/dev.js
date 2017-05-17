@@ -6,15 +6,13 @@ const paths = require("./paths");
 
 const HOST = process.env.HOST || "localhost";
 const PORT = process.env.PORT || 3030;
-// const ADAPTER = process.env.ADAPTER || "0.0.0.0";
+const ADAPTER = process.env.ADAPTER || "localhost";
 
 module.exports = {
-  // entry: [
-  //   "react-hot-loader/patch"
-  // ],
-    entry: [
-    "react-hot-loader"
-  ],
+   entry: [
+     "react-hot-loader/patch"
+   ],
+
   output: {
     publicPath: `http://${HOST}:${PORT}/`,
   },
@@ -25,43 +23,49 @@ module.exports = {
     hot: true,
     inline: true,
     port: PORT,
-    // host: ADAPTER,
+    host: ADAPTER,
     stats: "errors-only",
     noInfo: false,
   },
 
-  resolve: {
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.js']
-  },
-  resolveLoader: {
-    modulesDirectories: ['node_modules'],
-    moduleTemplates: ['*-loader', '*'],
-    extensions: ['', '.js']
-  },
-
   module: {
-    loaders: [
+	    rules: [
+	      // {
+	      //   test: /\.js?$/,
+	      //   loader: "eslint-loader",
+	      //   options: {
+	      //     emitWarning: true,
+	      //   },
+	      //   enforce: "pre",
+	      //   exclude: /node_modules/,
+	      // },
+	      {
+	        test: /\.s?css$/,
+	        use: [{
+	          loader: "style-loader",
+	          options: {
+	            sourceMap: true
+	          }
+	        }, {
+	          loader: "css-loader",
+	          options: {
+	            sourceMap: true,
+	            minimize: true,
+	            autoprefixer: {
+	              add: true,
+	              browsers: ["last 3 versions"],
+	            },
+	          }
+	        }, {
+	          loader: "sass-loader",
+	          options: {
+	            sourceMap: true
+	          }
+	        }],
+	      },
+	    ],
+	  },
 
-
-      {
-        test: /\.s?css$/,
-        loader: "style!css!sass",
-
-      },
-
-      {
-        test: /\.css$/,
-        loader: "style!css",
-
-        include: [
-          path.resolve(__dirname, '/node_modules/slick-carousel/slick'),
-
-        ],
-      },
-
-    ]
-  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
