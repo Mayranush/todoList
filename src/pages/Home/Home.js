@@ -25,6 +25,7 @@ class Home extends Component {
 
     render() {
         let data = this.props.data.data;
+
         return (
             <div className="main-container">
                 {data.length && <div>
@@ -49,7 +50,7 @@ class Home extends Component {
 export { Home };
 export default connect(
     state => ({ data: state.toDoList }),
-    dispatch => bindActionCreators({ ...toDoListActions }, dispatch)
+    { ...toDoListActions }
 )(Home);
 
 
