@@ -12,7 +12,7 @@ const ToDoItem = ({...props}) => {
                             type="checkbox"
                             checked={item.done}
                             id={props.cotegoryId + "-" + item.id}
-                            onClick={props.handleCheckItem} />
+                            onChange={props.handleCheckItem} />
                         <p>{item.title}</p>
                     </div>
             )}

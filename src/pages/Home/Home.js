@@ -8,7 +8,7 @@ import "./Home.scss"
 class Home extends Component {
 
     static propTypes = {
-        toDoData: PropTypes.array.isRequired,
+        data: PropTypes.object.isRequired,
     };
 
     constructor(props) {
@@ -24,20 +24,20 @@ class Home extends Component {
     }
 
     render() {
+        let data = this.props.data.data;
         return (
             <div className="main-container">
-                {this.props.toDoData.length && <div>
+                {data.length && <div>
                     <ToDoProgressBar
-                        toDoList={this.props.toDoData}
+                        toDoList={data}
                         choosenCategoryId={this.state.choosenCategoryId} />
                     <Cotegory
-                        toDoList={this.props.toDoData}
+                        toDoList={data}
                         choosenCategoryId={this.state.choosenCategoryId}
                         handleChoosenCategory={this.handleChoosenCategory} />
-
                     <ToDoContainer
-                        toDoList={this.props.toDoData}
-                        checkToDoItemAction={this.props.checkToDoItemAction}
+                        toDoList={data}
+                        checkToDoItem={this.props.checkToDoItem}
                         choosenCategoryId={this.state.choosenCategoryId} />
                 </div>}
             </div>
@@ -48,7 +48,7 @@ class Home extends Component {
 
 export { Home };
 export default connect(
-    state => ({ toDoData: state.toDoList }),
+    state => ({ data: state.toDoList }),
     dispatch => bindActionCreators({ ...toDoListActions }, dispatch)
 )(Home);
 

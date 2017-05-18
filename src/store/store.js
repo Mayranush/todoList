@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import  {toDoList} from "../reducers";
+import { toDoList } from "../reducers";
 
 const reducers = combineReducers({
   toDoList
@@ -24,3 +24,4 @@ if (window && !window.store) {
 
 
 export default store;
+

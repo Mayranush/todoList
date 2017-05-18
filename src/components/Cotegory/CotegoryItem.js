@@ -11,7 +11,6 @@ const CotegoryItem = ({...props}) => {
                 onChange={props.handleChoosenCategory}
                 />
             <p>{props.item.title}</p>
-
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import { ActionTypes } from "../constants";
 import { tools } from "../resources";
+import { handleActions } from "redux-actions";
 
 const mockData = [{
     id: 0,
@@ -51,27 +52,10 @@ const mockData = [{
 
 }];
 
-export default (state = mockData, action) => {
-    switch (action.type) {
-        case ActionTypes.toDoList.check:
-
-            let cotegoryId = action.payload.cotegoryId;
-            let itemId = action.payload.itemId;
-            let newState = tools.cloneState(state);
-            
-            newState.map(item => {
-                if (item.id === +cotegoryId) {
-                    item.items.map(itemElem => {
-                        if (itemElem.id === +itemId) {
-                            itemElem.done = !itemElem.done;
-                            return
-                        }
-                    })
-                }
-            })
-
-            return newState;
-        default:
-            return state;
-    }
+const defaultState = {
+    data: mockData
 };
+
+export default handleActions({
+    [ActionTypes.toDoList.check]: (state, { payload }) => ({ ...state, data: payload }),
+}, defaultState);
