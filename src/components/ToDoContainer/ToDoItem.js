@@ -1,4 +1,5 @@
 import React, { PropTypes } from "react";
+// import editIcon from "../../../assets/edit.png"
 
 const ToDoItem = ({...props}) => {
     let items = props.item.items;
@@ -14,6 +15,10 @@ const ToDoItem = ({...props}) => {
                             id={props.cotegoryId + "-" + item.id}
                             onChange={props.handleCheckItem} />
                         <p>{item.title}</p>
+                        <div className="edit-item"
+                            id={props.cotegoryId + "-" + item.id}
+                            onClick={props.openItemInDetails}>
+                        </div>
                     </div>
             )}
         </div>

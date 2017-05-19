@@ -12,16 +12,19 @@ const mockData = [{
             type: "toDo",
             title: "ro-do item 0.0",
             done: false,
+            text: "lslls",
         },
         {
             id: 1,
             title: "ro-do item 0.1",
             done: false,
+            text: "lslls",
         },
         {
             id: 2,
             title: "ro-do item 0.2",
             done: false,
+            text: "lslls",
         }
     ]
 
@@ -35,18 +38,21 @@ const mockData = [{
             type: "toDo",
             title: "ro-do item 1.0",
             done: false,
+            text: "lslls",
         },
         {
             id: 1,
             type: "toDo",
             title: "ro-do item 1.1",
             done: false,
+            text: "lslls",
         },
         {
             id: 2,
             type: "toDo",
             title: "ro-do item 1.2",
             done: false,
+            text: "lslls",
         }
     ]
 

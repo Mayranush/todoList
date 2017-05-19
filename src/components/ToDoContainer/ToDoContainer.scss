@@ -1,6 +1,6 @@
 .todo-list-container {
     float: right;
-    width: 60%;
+    width: 70%;
     box-sizing: border-box;
     .to-do-item {
         height: 30px;
@@ -9,6 +9,14 @@
         p {
             display: inline-block;
             margin-left: 10px;
+        }
+        .edit-item {
+            float: right;
+            margin: 6px 6px 0 0;
+            background: url("../../../assets/img/edit.png") no-repeat;
+            background-size: contain;
+            width: 15px;
+            height: 15px;
         }
     }
 }
