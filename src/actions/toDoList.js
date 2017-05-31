@@ -94,7 +94,6 @@ export function addTask(catId, title) {
 const deleteCatResponse = createAction(ActionTypes.toDoList.deleteCat);
 
 export function deleteCat(catId) {
-  console.log(catId);
   return (dispatch) => {
     let state = store.getState().toDoList.data;
     let newState = state.filter(function (obj) {

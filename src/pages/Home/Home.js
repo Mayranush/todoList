@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {toDoListActions} from "../../actions";
-import {ToDoContainer, ToDoProgressBar, Cotegory, ItemInDetail, AddNewTask} from "components";
+import {ToDoContainer, ToDoProgressBar, Cotegory, ItemInDetail, AddNewTask, Filter} from "components";
 import "./Home.scss"
 
 class Home extends Component {
@@ -15,11 +15,18 @@ class Home extends Component {
     super(props);
     this.state = {
       choosenCategoryId: 0,
-      editItem: { id: null, item: null }
+      editItem: { id: null, item: null },
+      filterDoneState: false
     };
     this.handleChoosenCategory = this.choosenCategory.bind(this);
     this.handleOpenItemInDetails = this.openItemInDetails.bind(this);
     this.handleCloseEdit = this.closeEdit.bind(this);
+    this.handleFilterDone = this.filterDone.bind(this)
+  }
+
+  filterDone({ target }) {
+
+    this.setState({ filterDoneState: !!target.checked })
   }
 
   choosenCategory({ target }) {
@@ -56,7 +63,7 @@ class Home extends Component {
     return (
       <div className="main-container">
         {data.length && <div>
-
+          <Filter filterDone={this.handleFilterDone} filterDoneState={this.state.filterDoneState}/>
           <ToDoProgressBar
             toDoList={data}
             choosenCategoryId={this.state.choosenCategoryId}/>
@@ -77,6 +84,7 @@ class Home extends Component {
                 closeEdit={this.handleCloseEdit}
                 editToDoItem={this.props.editToDoItem}/>
               : <ToDoContainer
+                filterDoneState={this.state.filterDoneState}
                 toDoList={data}
                 checkToDoItem={this.props.checkToDoItem}
                 choosenCategoryId={this.state.choosenCategoryId}

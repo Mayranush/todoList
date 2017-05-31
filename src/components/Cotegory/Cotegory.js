@@ -4,7 +4,6 @@ import {CotegoryItem} from "./CotegoryItem";
 
 import "./Cotegory.scss";
 
-
 const Cotegory = ({ ...props }) => (
 
   <div className="cotegory-container">

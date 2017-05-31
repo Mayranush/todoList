@@ -6,8 +6,10 @@ const ToDoItem = ({ ...props }) => {
   return (
     <div>
       {items.map(
-        (item, i) =>
-          <div className="to-do-item" key={item.id}>
+        (item, i) => {
+
+          if(props.filterDoneState !== item.done){return}
+          return (<div className="to-do-item" key={item.id}>
             <input
               type="checkbox"
               checked={item.done}
@@ -19,7 +21,8 @@ const ToDoItem = ({ ...props }) => {
                  id={props.cotegoryId + "-" + item.id}
                  onClick={props.openItemInDetails}>
             </div>
-          </div>
+          </div>)
+        }
       )}
     </div>
   )
