@@ -16,7 +16,7 @@ class Home extends Component {
     this.state = {
       choosenCategoryId: 0,
       editItem: { id: null, item: null },
-      filterDoneState: false
+      filterState: "all"
     };
     this.handleChoosenCategory = this.choosenCategory.bind(this);
     this.handleOpenItemInDetails = this.openItemInDetails.bind(this);
@@ -25,8 +25,7 @@ class Home extends Component {
   }
 
   filterDone({ target }) {
-
-    this.setState({ filterDoneState: !!target.checked })
+    target.value !== this.state.filterState && this.setState({ filterState: target.value });
   }
 
   choosenCategory({ target }) {
@@ -63,7 +62,7 @@ class Home extends Component {
     return (
       <div className="main-container">
         {data.length && <div>
-          <Filter filterDone={this.handleFilterDone} filterDoneState={this.state.filterDoneState}/>
+          <Filter filter={this.handleFilterDone} filterState={this.state.filterState}/>
           <ToDoProgressBar
             toDoList={data}
             choosenCategoryId={this.state.choosenCategoryId}/>
@@ -84,7 +83,7 @@ class Home extends Component {
                 closeEdit={this.handleCloseEdit}
                 editToDoItem={this.props.editToDoItem}/>
               : <ToDoContainer
-                filterDoneState={this.state.filterDoneState}
+                filterState={this.state.filterState}
                 toDoList={data}
                 checkToDoItem={this.props.checkToDoItem}
                 choosenCategoryId={this.state.choosenCategoryId}

@@ -8,7 +8,6 @@ class AddNewTask extends Component {
   static propTypes = {
     addCat: PropTypes.func.isRequired,
     addTask: PropTypes.func.isRequired,
-    choosenCatId: PropTypes.number.isRequired,
   };
 
   constructor(props) {

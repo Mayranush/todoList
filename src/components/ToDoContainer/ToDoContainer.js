@@ -9,7 +9,7 @@ const ToDoContainer = ({ ...props }) => (
       (item, i) =>
       props.choosenCategoryId == item.id &&
       <ToDoItem
-        filterDoneState={props.filterDoneState}
+        filterState={props.filterState}
         item={item}
         key={item.id}
         id={item.id}

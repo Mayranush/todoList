@@ -8,7 +8,7 @@ const ToDoItem = ({ ...props }) => {
       {items.map(
         (item, i) => {
 
-          if(props.filterDoneState !== item.done){return}
+          if(props.filterState === "done" && !item.done){return}
           return (<div className="to-do-item" key={item.id}>
             <input
               type="checkbox"
@@ -31,7 +31,6 @@ const ToDoItem = ({ ...props }) => {
 ToDoItem.propTypes = {
   item: PropTypes.object.isRequired,
   id: PropTypes.string.isRequired,
-  cotegoryId: PropTypes.number.isRequired,
   checkToDoItem: PropTypes.func.isRequired,
   openItemInDetails: PropTypes.func.isRequired,
 };
