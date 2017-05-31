@@ -1,0 +1,10 @@
+.add-new-item-container{
+  .add-new-task-item-container:nth-child(1){
+    float: left;
+    margin-bottom: 10px;
+  }
+  .add-new-task-item-container:nth-child(2){
+    float: right;
+    margin-bottom: 10px;
+  }
+}

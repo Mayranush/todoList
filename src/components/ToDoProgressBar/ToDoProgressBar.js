@@ -1,34 +1,34 @@
-import React, { PropTypes } from "react";
+import React, {PropTypes} from "react";
 import "./ToDoProgressBar.scss";
 
-const ToDoProgressBar = ({...props}) => {
+const ToDoProgressBar = ({ ...props }) => {
 
-    let countDone = 0;
-    let fillBarWidth;
-    let items;
+  let countDone = 0;
+  let fillBarWidth;
+  let items;
 
-    for (let i = 0; i < props.toDoList.length; i++) {
-        if (props.toDoList[i].id == props.choosenCategoryId) {
-            items = props.toDoList[i].items;
-            for (let j = 0; j < items.length; j++) {
-                items[j].done ? countDone++ : "";
-            }
-        }
+  props.toDoList.map(catItem => {
+    if (catItem.id == props.choosenCategoryId) {
+      items = catItem.items;
+      for (let j = 0; j < items.length; j++) {
+        items[j].done ? countDone++ : "";
+      }
     }
+  });
 
-    fillBarWidth = (countDone * 100) / items.length;
+  fillBarWidth = (countDone * 100) / items.length;
 
-    return (
-        <div className="bar-container">
-            <div className="bar">
-                <div className="bar-fill" style={{ width: fillBarWidth + "%" }}></div>
-            </div>
-        </div>
-    )
-}
+  return (
+    <div className="bar-container">
+      <div className="bar">
+        <div className="bar-fill" style={{ width: fillBarWidth + "%" }}></div>
+      </div>
+    </div>
+  )
+};
 
 ToDoProgressBar.PropTypes = {
-    toDoList: PropTypes.array.isRequired
-}
+  toDoList: PropTypes.array.isRequired
+};
 
-export { ToDoProgressBar };
+export {ToDoProgressBar};

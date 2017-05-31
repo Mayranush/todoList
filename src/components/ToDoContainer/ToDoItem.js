@@ -1,5 +1,4 @@
 import React, { PropTypes } from "react";
-// import editIcon from "../../../assets/edit.png"
 
 const ToDoItem = ({...props}) => {
     let items = props.item.items;
@@ -23,10 +22,10 @@ const ToDoItem = ({...props}) => {
             )}
         </div>
     )
-}
+};
 
 ToDoItem.propTypes = {
     item: PropTypes.object.isRequired
-}
+};
 
 export { ToDoItem }
