@@ -1,4 +1,5 @@
-import React, {PropTypes} from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import "./ToDoProgressBar.scss";
 
 const ToDoProgressBar = ({ ...props }) => {
@@ -27,8 +28,9 @@ const ToDoProgressBar = ({ ...props }) => {
   )
 };
 
-ToDoProgressBar.PropTypes = {
-  toDoList: PropTypes.array.isRequired
+ToDoProgressBar.propTypes = {
+  toDoList: PropTypes.array.isRequired,
+  id: PropTypes.string,
+  cotegoryId: PropTypes.number,
 };
-
 export {ToDoProgressBar};

@@ -1,9 +1,14 @@
 import React, {Component} from "react";
-
+import PropTypes from "prop-types";
 import "./ItemInDetail.scss";
 
 class ItemInDetail extends Component {
 
+  static propTypes = {
+    item: PropTypes.object.isRequired,
+    handleEaveEditItem: PropTypes.func.isRequired,
+    closeEdit: PropTypes.number.isRequired,
+  };
 
   constructor(props) {
     super(props);

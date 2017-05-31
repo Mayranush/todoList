@@ -1,6 +1,6 @@
-import React, {PropTypes, Component} from "react";
+import React, {Component} from "react";
 import {ToDoItem} from "./ToDoItem";
-
+import PropTypes from "prop-types";
 import "./ToDoContainer.scss";
 
 const ToDoContainer = ({ ...props }) => (
@@ -18,6 +18,14 @@ const ToDoContainer = ({ ...props }) => (
     )}
   </div>
 );
+
+ToDoContainer.propTypes = {
+  item: PropTypes.object,
+  id: PropTypes.string,
+  cotegoryId: PropTypes.string,
+  checkToDoItem: PropTypes.func.isRequired,
+  openItemInDetails: PropTypes.func.isRequired,
+};
 
 
 export {ToDoContainer}

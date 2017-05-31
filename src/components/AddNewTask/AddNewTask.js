@@ -1,9 +1,16 @@
 import React, {Component} from "react";
 import {AddNewTaskItem} from "./AddNewTaskItem";
-import ReactDOM from 'react-dom'
+import PropTypes from "prop-types";
 import "./AddNewTask.scss";
 
 class AddNewTask extends Component {
+
+  static propTypes = {
+    addCat: PropTypes.func.isRequired,
+    addTask: PropTypes.func.isRequired,
+    choosenCatId: PropTypes.number.isRequired,
+  };
+
   constructor(props) {
     super(props);
 
@@ -14,7 +21,7 @@ class AddNewTask extends Component {
   addCat() {
     let text = this.catInput.refs.catValue.value;
     this.props.addCat(text);
-    this.catInput.refs.catValue.value="";
+    this.catInput.refs.catValue.value = "";
   }
 
   addTask() {
@@ -34,7 +41,6 @@ class AddNewTask extends Component {
           inputRef="catValue"
           placeholderText="Enter category title"
           btnText="Add"
-          type="cat"
           addItem={this.handleAddCat}/>
         <AddNewTaskItem
           ref={(input) => {
@@ -43,7 +49,6 @@ class AddNewTask extends Component {
           inputRef="taskValue"
           placeholderText="Enter task title"
           btnText="Add"
-          type="task"
           addItem={this.handleAddTask}/>
       </div>
     )

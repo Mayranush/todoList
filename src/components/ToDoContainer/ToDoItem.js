@@ -1,5 +1,5 @@
-import React, {PropTypes} from "react";
-
+import React from "react";
+import PropTypes from "prop-types";
 const ToDoItem = ({ ...props }) => {
   let items = props.item.items;
 
@@ -26,7 +26,11 @@ const ToDoItem = ({ ...props }) => {
 };
 
 ToDoItem.propTypes = {
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  cotegoryId: PropTypes.number.isRequired,
+  checkToDoItem: PropTypes.func.isRequired,
+  openItemInDetails: PropTypes.func.isRequired,
 };
 
 export {ToDoItem}

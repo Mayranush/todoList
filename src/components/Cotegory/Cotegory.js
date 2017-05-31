@@ -1,4 +1,5 @@
-import React, {PropTypes, Component} from "react";
+import React, {Component} from "react";
+import PropTypes from "prop-types";
 import {CotegoryItem} from "./CotegoryItem";
 
 import "./Cotegory.scss";
@@ -19,5 +20,12 @@ const Cotegory = ({ ...props }) => (
   </div>
 );
 
+Cotegory.propTypes = {
+  item: PropTypes.object,
+  key: PropTypes.string,
+  check: PropTypes.string,
+  handleChoosenCategory: PropTypes.func.isRequired,
+  deleteCat: PropTypes.func.isRequired,
+};
 
 export {Cotegory}

@@ -1,15 +1,13 @@
-import React, { PropTypes, Component } from "react";
+import React, {Component} from "react";
 
-
-const MainLayout = ({children, location}) => {
-
+const MainLayout = ({ children, location }) => {
   return (<div>
-    
+
     <div id="content" className="main">
       {children}
     </div>
- 
+
   </div>)
 };
 
-export { MainLayout };
+export {MainLayout};
