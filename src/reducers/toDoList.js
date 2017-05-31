@@ -73,4 +73,5 @@ export default handleActions({
   [ActionTypes.toDoList.edit]: (state, { payload }) => ({ ...state, data: payload }),
   [ActionTypes.toDoList.addCat]: (state, { payload }) => ({ ...state, data: payload }),
   [ActionTypes.toDoList.addTask]: (state, { payload }) => ({ ...state, data: payload }),
+  [ActionTypes.toDoList.deleteCat]: (state, { payload }) => ({ ...state, data: payload }),
 }, defaultState);

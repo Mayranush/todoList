@@ -87,10 +87,23 @@ export function addTask(catId, title) {
       text: "",
     };
 
-    newState.filter(item => item.id === ""+catId)[0].items.push(newTask);
+    newState.filter(item => item.id === "" + catId)[0].items.push(newTask);
     return dispatch(addTaskResponse(newState))
   };
 }
 
 
+const deleteCatResponse = createAction(ActionTypes.toDoList.deleteCat);
+
+export function deleteCat(catId) {
+  console.log(catId);
+  return (dispatch) => {
+    let state = store.getState().toDoList.data;
+    let newState = state.filter(function (obj) {
+      return obj.id !== catId;
+    });
+
+    return dispatch(deleteCatResponse(newState))
+  };
+}
 

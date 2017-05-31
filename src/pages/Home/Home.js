@@ -67,7 +67,9 @@ class Home extends Component {
             <Cotegory
               toDoList={data}
               choosenCategoryId={this.state.choosenCategoryId}
-              handleChoosenCategory={this.handleChoosenCategory}/>
+              handleChoosenCategory={this.handleChoosenCategory}
+              deleteCat={this.props.deleteCat}/>
+
             {this.state.editItem.id ? <ItemInDetail
                 itemId={this.state.editItem.id}
                 editItem={this.state.editItem.item}

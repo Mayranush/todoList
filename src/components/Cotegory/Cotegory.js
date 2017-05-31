@@ -1,36 +1,23 @@
-import React, { PropTypes, Component } from "react";
-import { CotegoryItem } from "./CotegoryItem";
+import React, {PropTypes, Component} from "react";
+import {CotegoryItem} from "./CotegoryItem";
 
 import "./Cotegory.scss";
 
 
-class Cotegory extends Component {
+const Cotegory = ({ ...props }) => (
 
-    static propTypes = {
-        toDoList: PropTypes.array.isRequired
-    };
-
-    constructor(props) {
-        super(props);
-
-    }
-
-    render() {
-
-        return (
-            <div className="cotegory-container">
-                {this.props.toDoList.map(
-                    (item, i) => <CotegoryItem
-                        item={item}
-                        key={item.id}
-                        id={item.id}
-                        check={this.props.choosenCategoryId == item.id}
-                        handleChoosenCategory={this.props.handleChoosenCategory} />
-                )}
-            </div>
-        )
-    }
-};
+  <div className="cotegory-container">
+    {props.toDoList.map(
+      (item, i) => <CotegoryItem
+        item={item}
+        key={item.id}
+        id={item.id}
+        check={props.choosenCategoryId == item.id}
+        handleChoosenCategory={props.handleChoosenCategory}
+        deleteCat={props.deleteCat}/>
+    )}
+  </div>
+);
 
 
-export { Cotegory }
+export {Cotegory}

@@ -11,12 +11,13 @@ const CotegoryItem = ({ ...props }) => {
         onChange={props.handleChoosenCategory}
       />
       <p>{props.item.title}</p>
+      <div data-catId={props.id} className="delete-item" onClick={()=>{props.deleteCat(props.id)}}></div>
     </div>
   )
-}
+};
 
 CotegoryItem.propTypes = {
   item: PropTypes.object.isRequired
-}
+};
 
 export {CotegoryItem}
