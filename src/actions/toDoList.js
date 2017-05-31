@@ -19,7 +19,7 @@ export function checkToDoItem(item) {
                     }
                 })
             }
-        })
+        });
 
         return dispatch(getDataRequest(newState))
     };
@@ -48,7 +48,7 @@ export function editToDoItem(id, data) {
                     }
                 })
             }
-        })
+        });
 
         return dispatch(getDataRequest(newState))
     };
