@@ -30,7 +30,7 @@ class Home extends Component {
     let itemId = target.id.split("-")[1];
     let data = this.props.data.data;
 
-    let item = { ...data.filter(item => item.id == cotegoryId)[0].items.filter(item => item.id == itemId)[0] };
+    let item = { ...data.filter(item => item.id === cotegoryId)[0].items.filter(item => item.id === itemId)[0] };
     this.setState({
       editItem: {
         id: cotegoryId + "-" + itemId,
