@@ -5,14 +5,13 @@ import "./ItemInDetail.scss";
 class ItemInDetail extends Component {
 
   static propTypes = {
-    item: PropTypes.object.isRequired,
-    handleEaveEditItem: PropTypes.func.isRequired,
-    closeEdit: PropTypes.number.isRequired,
+    editItem: PropTypes.object,
+    closeEdit: PropTypes.func.isRequired,
+    editToDoItem: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
-
     this.handleEaveEditItem = this.saveEditItem.bind(this);
   }
 
