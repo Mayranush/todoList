@@ -1,6 +1,7 @@
 const ActionTypes = {
     toDoList: {
-        check: "ITEM_CHECK",
+        check: "CHECK",
+        edit: "EDIT"
     }
 };
 

@@ -25,3 +25,31 @@ export function checkToDoItem(item) {
     };
 }
 
+
+
+const editDataRequest = createAction(ActionTypes.toDoList.edit);
+
+export function editToDoItem(id, data) {
+
+    return (dispatch) => {
+
+        let cotegoryId = id.split("-")[0];
+        let itemId = id.split("-")[1];
+        let newState = tools.cloneState(store.getState().toDoList.data);
+
+        newState.map(item => {
+            if (item.id === +cotegoryId) {
+                item.items.map(itemElem => {
+                    if (itemElem.id === +itemId) {
+                        itemElem.done = data.done;
+                        itemElem.title = data.title;
+                        itemElem.text = data.text;
+                        return
+                    }
+                })
+            }
+        })
+
+        return dispatch(getDataRequest(newState))
+    };
+}

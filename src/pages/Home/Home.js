@@ -15,11 +15,11 @@ class Home extends Component {
         super(props);
         this.state = {
             choosenCategoryId: 0,
-            editItem: null
+            editItem: { id: null, item: null }
         };
         this.handleChoosenCategory = this.choosenCategory.bind(this);
         this.handleOpenItemInDetails = this.openItemInDetails.bind(this);
-        this.handleCancelEdit = this.cancelEdit.bind(this);
+        this.handleCloseEdit = this.closeEdit.bind(this);
     }
 
     choosenCategory({target}) {
@@ -33,29 +33,45 @@ class Home extends Component {
         let data = this.props.data.data;
 
         let item = { ...data.filter(item => item.id === cotegoryId)[0].items.filter(item => item.id === itemId)[0] };
-        this.setState({ editItem: item })
+        this.setState({
+            editItem: {
+                id: cotegoryId + "-" + itemId,
+                item: item
+            }
+        })
     }
 
-    cancelEdit() {
-        this.setState({ editItem: null })
+    closeEdit() {
+        this.setState({
+            editItem: {
+                id: null,
+                item: null
+            }
+        })
     }
 
     render() {
+
         let data = this.props.data.data;
 
         return (
             <div className="main-container">
                 {data.length && <div>
+
                     <ToDoProgressBar
                         toDoList={data}
                         choosenCategoryId={this.state.choosenCategoryId} />
+
                     <Cotegory
                         toDoList={data}
                         choosenCategoryId={this.state.choosenCategoryId}
                         handleChoosenCategory={this.handleChoosenCategory} />
-                    {this.state.editItem ? <ItemInDetail
-                        editItem={this.state.editItem}
-                        cancelEdit={this.handleCancelEdit} />
+
+                    {this.state.editItem.id ? <ItemInDetail
+                        itemId={this.state.editItem.id}
+                        editItem={this.state.editItem.item}
+                        closeEdit={this.handleCloseEdit}
+                        editToDoItem={this.props.editToDoItem} />
                         : <ToDoContainer
                             toDoList={data}
                             checkToDoItem={this.props.checkToDoItem}

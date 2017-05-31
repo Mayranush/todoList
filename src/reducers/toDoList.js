@@ -64,4 +64,5 @@ const defaultState = {
 
 export default handleActions({
     [ActionTypes.toDoList.check]: (state, { payload }) => ({ ...state, data: payload }),
+    [ActionTypes.toDoList.edit]: (state, { payload }) => ({ ...state, data: payload }),
 }, defaultState);
