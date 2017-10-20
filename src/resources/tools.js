@@ -1,6 +1,10 @@
 function filter() {
+  let newIdCat = 3;
+  let newIdTodo = 12;
+  let newIdForChildCat = 3;
+
   let cloneState = function (state) {
-    let newState = [];
+    let newState = [];    
 
     state.map((item, i) => {
       newState.push(Object.assign({}, item));
@@ -9,17 +13,26 @@ function filter() {
         newState[i].items.push(Object.assign({}, elem))
       })
     });
-
-
     return newState
   };
-  let idGenerator = function () {
-    return Math.random().toString(36).substring(7);
+
+  let idGeneratorForCat = function () {
+    return newIdCat++;
   };
+
+  let idGeneratorForTodo = function () {
+    return newIdTodo++;
+  };
+
+  let idGeneratorForCatChild = function() {
+    return newIdForChildCat++;
+  }
 
   return {
     cloneState: cloneState,
-    idGenerator: idGenerator
+    idGeneratorForCat: idGeneratorForCat,
+    idGeneratorForTodo: idGeneratorForTodo,
+    idGeneratorForCatChild: idGeneratorForCatChild
   }
 }
 

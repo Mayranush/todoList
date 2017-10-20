@@ -1,0 +1,14 @@
+.category-container {
+  float:left;
+  
+  .category-item {  
+    border: 1px solid red;
+    width: 180px;
+  
+    .category-item-delete {
+      float: right;
+      cursor: pointer;
+    }
+  }
+  
+}

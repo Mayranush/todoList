@@ -1,0 +1,14 @@
+.progress-bar {
+  border: 1px solid gray;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin: 30px 5px 10px;  
+  height: 7px;
+
+  div {
+    background-color: orange;
+    height: 5px;
+    border-radius: 10px;
+  }
+
+}

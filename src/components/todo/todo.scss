@@ -1,0 +1,15 @@
+.todo-container {
+  float: right;
+  width: 180px;
+
+  .todo-item {
+    width: 250px;    
+    height: 20px;
+    border:1px solid blue;
+
+    input {
+      float: left;
+      clear: both;
+    }
+  }
+}

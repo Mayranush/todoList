@@ -5,7 +5,7 @@ const path = require("path");
 const paths = require("./paths");
 
 const HOST = process.env.HOST || "localhost";
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3010;
 const ADAPTER = process.env.ADAPTER || "localhost";
 
 module.exports = {
@@ -28,6 +28,10 @@ module.exports = {
     noInfo: false,
   },
 
+  watch: true,
+  watchOptions: {
+    aggregateTimeout: 100
+  },
   module: {
 	    rules: [
 	      // {

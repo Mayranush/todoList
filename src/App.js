@@ -6,12 +6,12 @@ import store from "./store/store";
 
 class App extends React.Component {
 
- render() {
+  render() {
     return (
       <Provider store={store}>
-      <Router history={browserHistory} routes={routes}/>
+        <Router history={browserHistory} routes={routes}/>
       </Provider>
- )
+    )
   }
 }
 

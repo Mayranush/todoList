@@ -79,7 +79,7 @@ module.exports = {
 	  },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "DMPL",
+      title: "todo",
       template: `${paths.app}/index.html`,
     })
   ]
